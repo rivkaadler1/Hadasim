@@ -13,5 +13,5 @@
 "recovery_date": null, "member_id": "394959999"}' 
  
 דוגמת הרצה:![image](https://github.com/rivkaadler1/Hadasim/assets/79863410/af72357d-2722-4d85-839d-bcdbd4b016d1)
-ניתן לראות שהובייקט הוסף לבסיס הנתונים:
+ניתן לראות שהאובייקט הוסף לבסיס הנתונים:
 ![image](https://github.com/rivkaadler1/Hadasim/assets/79863410/28b6146c-1cc6-4949-8610-ea302bca9120)
