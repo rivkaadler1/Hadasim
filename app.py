@@ -29,11 +29,6 @@ def get_members():
     return response
 
 
-class APIError(Exception):
-    """All custom API Exceptions"""
-    pass
-
-
 class APIBadReqError(APIError):
     """Custom Bad Request Error Class."""
     code = 400
@@ -61,9 +56,14 @@ def check_input(_json):
 
     if len(_json["member_id"]) != 9:
         raise APIBadReqError("Bad id number")
+
+    # Check if member_id already exists in the database
+    existing_member = db.members.find_one({"member_id": _json["member_id"]})
+    if existing_member:
+        raise APIBadReqError("Member with the same ID already exists")
+
     if not isinstance(_json["vaccine_dates"], list) or not isinstance(_json["vaccine_manufacturers"], list):
-        raise APIBadReqError("The number of vaccination dates is not the same as the number of their manufacturers"
-                             " - incompatibility.")
+        raise APIBadReqError("The type of the fields :vaccine_dates,vaccine_manufacturers should be list")
 
     if len(_json["vaccine_dates"]) != len(_json["vaccine_manufacturers"]):
         raise APIBadReqError("The number of vaccination dates is not the same as the number of their manufacturers"
